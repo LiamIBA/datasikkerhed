@@ -1,1 +1,73 @@
-/*# sourceMappingURL=style.css.map */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  width: 70%;
+  max-width: 1000px;
+}
+.container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.container button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.container button:hover {
+  background-color: #0062cc;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Hidden by default */
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.5s;
+  z-index: 1000;
+}
+.popup .popup-content {
+  padding: 20px;
+  height: 100%;
+}
+.popup .popup-content .close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.info-columns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.info-columns .info-column {
+  width: 30%;
+  background: #eee;
+  padding: 15px;
+  border-radius: 5px;
+}
+.info-columns .info-column h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.info-columns .info-column ul {
+  text-align: left;
+  padding-left: 20px;
+}/*# sourceMappingURL=style.css.map */

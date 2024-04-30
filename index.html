@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Styrke Tester</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vær sikker online med en stærk adgangskode</h1>
+        <button onclick="openPasswordPopup()">Test dit password</button>
+        <div id="passwordPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePasswordPopup()">&times;</span>
+                <p>Indtast dit password for at teste dets styrke:</p>
+                <input type="password" id="passwordInput" placeholder="Indtast dit password" oninput="checkPasswordStrength()">
+                <div id="strengthDisplay"></div>
+            </div>
+        </div>
+
+        <div class="info-columns">
+            <div class="info-column">
+                <h2>Hvad gør et password stærkt?</h2>
+                <p>Et stærkt password indeholder en blanding af:</p>
+                <ul>
+                    <li>Store og små bogstaver.</li>
+                    <li>Tal.</li>
+                    <li>Symboler.</li>
+                    <li>Er mindst 14 tegn langt.</li>
+                </ul>
+            </div>
+            <div class="info-column">
+                <h2>Risici ved svage passwords</h2>
+                <p>Svage passwords kan føre til:</p>
+                <ul>
+                    <li>Uautoriseret adgang til dine konti.</li>
+                    <li>Finansielle tab.</li>
+                    <li>Identitetstyveri.</li>
+                </ul>
+            </div>
+            <div class="info-column">
+                <h2>Tips til sikre passwords</h2>
+                <p>For at forbedre din sikkerhed:</p>
+                <ul>
+                    <li>Brug en password manager.</li>
+                    <li>Skift passwords regelmæssigt.</li>
+                    <li>Anvend tofaktor-autentifikation.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="java.js"></script>
+</body>
+</html>
+
+
+
