@@ -26,9 +26,10 @@ function getPasswordStrength(password) {
     let score = 0;
 
     // Opdateret logik for minimum længde
-    if (password.length >= 8) score += 1; // Tildele point for minimumslængden
-    if (password.length >= 12) score += 1; // Yderligere point for længere passwords
-    if (password.length >= 14) score += 1; // Maksimal point for længde
+    if (password.length < 6) return strengths[0]; // Returner "Meget svag" hvis under 6 tegn
+    if (password.length >= 8) score += 1;
+    if (password.length >= 12) score += 1;
+    if (password.length >= 14) score += 1;
 
     // Tjek for store og små bogstaver, tal og symboler
     if (password.match(/[A-Z]/)) score += 1;
@@ -39,6 +40,5 @@ function getPasswordStrength(password) {
     // Sikrer at passwordet ikke er et enkelt ord fra en ordbog eller et kendt navn
     if (!password.match(/^(?=.*\b[a-zA-Z]{4,}\b).*$/)) score += 1;
 
-    return strengths[Math.min(score, 5)];
+    return strengths[Math.min(score, 4)];
 }
-
