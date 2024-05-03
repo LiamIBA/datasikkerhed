@@ -42,3 +42,25 @@ function getPasswordStrength(password) {
 
     return strengths[Math.min(score, 4)];
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        // Fjerner 'active' klassen fra det nuværende slide
+        slides[currentSlide].classList.remove('active');
+
+        // Opdaterer 'currentSlide' til næste billede i arrayet
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // Tilføjer 'active' klassen til det nye nuværende slide
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Initialiserer det første slide
+    slides[currentSlide].classList.add('active');
+
+    // Sætter intervallet til at skifte slide hver 3 sekunder (3000 millisekunder)
+    setInterval(showNextSlide, 3000);
+});

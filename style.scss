@@ -6,13 +6,36 @@ $info-background: #eee;
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: $background;
+    background-color: #f1f1f1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between; /* Sørger for at indhold og slider er adskilt */
     height: 100vh;
     margin: 0;
     overflow: hidden;
+}
+
+.slider {
+    position: absolute;
+    bottom: 0; // Placerer slideren i bunden af siden
+    width: 100%; // Fuld bredde af viewport
+    height: 300px; // Fast højde baseret på billedernes højde
+    overflow: hidden;
+    display: flex;
+    justify-content: center; // Centrerer slides horisontalt
+    align-items: center; // Centrerer slides vertikalt
+}
+
+.slide {
+    position: absolute;
+    width: 600px; // Fast bredde baseret på billedernes bredde
+    height: 300px; // Fast højde baseret på billedernes højde
+    opacity: 0; // Gør slides usynlige som standard
+    transition: opacity 1s ease-in-out; // Glat transition for opacitet
+}
+
+.active {
+    opacity: 1; // Kun den aktive slide er synlig
 }
 
 .container {
@@ -83,3 +106,5 @@ body {
         }
     }
 }
+
+

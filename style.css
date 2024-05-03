@@ -1,12 +1,36 @@
+@charset "UTF-8";
 body {
   font-family: "Arial", sans-serif;
   background-color: #f1f1f1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between; /* Sørger for at indhold og slider er adskilt */
   height: 100vh;
   margin: 0;
   overflow: hidden;
+}
+
+.slider {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.active {
+  opacity: 1;
 }
 
 .container {
