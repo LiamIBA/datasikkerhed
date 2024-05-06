@@ -19,7 +19,7 @@ body {
     position: absolute;
     bottom: 0; // Placerer slideren i bunden af siden
     width: 100%; // Fuld bredde af viewport
-    height: 300px; // Fast højde baseret på billedernes højde
+    height: 50%; // Fast højde baseret på billedernes højde
     overflow: hidden;
     display: flex;
     justify-content: center; // Centrerer slides horisontalt
@@ -28,8 +28,6 @@ body {
 
 .slide {
     position: absolute;
-    width: 600px; // Fast bredde baseret på billedernes bredde
-    height: 300px; // Fast højde baseret på billedernes højde
     opacity: 0; // Gør slides usynlige som standard
     transition: opacity 1s ease-in-out; // Glat transition for opacitet
 }
@@ -40,8 +38,6 @@ body {
 
 .container {
     text-align: center;
-    width: 70%;
-    max-width: 1000px;
 
     h1 {
         font-size: 32px;
