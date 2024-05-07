@@ -20,22 +20,34 @@ function closePasswordPopup() {
 
 function getPasswordStrength(password) {
     const strengths = {
-        0: { label: "Meget svag", color: "#f44336" },
-        1: { label: "Svag", color: "#ff9800" },
-        2: { label: "Middel", color: "#ffeb3b" },
-        3: { label: "Stærk", color: "#4caf50" },
-        4: { label: "Meget stærk", color: "#009688" }
+        1: { label: "Meget svag", description: "Dit password er meget svagt og let at gætte. Forøg sikkerheden ved at blande store og små bogstaver, tilføje tal samt specialtegn, og gør det længere end 14 tegn.", color: "#f44336" },
+        2: { label: "Svag", description: "Dit password er svagt og kunne være mere sikkert. Prøv at styrke det ved at inkludere en blanding af store bogstaver, tal og symboler for at gøre det sværere at gætte.", color: "#ff9800" },
+        4: { label: "Middel", description: "Dit password er middel, men det kan forbedres. Tilføj flere komplekse tegn, såsom symboler og blandede bogstavstørrelser, og overvej at øge længden.", color: "#ffeb3b" },
+        5: { label: "Stærk", description: "Godt arbejde! Dit password er stærkt. Husk at et ideelt stærkt password indeholder mindst 14 tegn, inkluderer både store og små bogstaver samt tal og symboler..", color: "#4caf50" },
+        6: { label: "Meget stærk", description: "Fantastisk! Dit password er meget stærkt og godt sikret. Vær sikker på at det har en blanding af store og små bogstaver, tal, specialtegn, og er på mindst 14 tegn.", color: "#009688" }
     };
+
     let score = 0;
-    if (password.length < 6) return strengths[0];
+
+    if (password.length >= 6) score++;
     if (password.length >= 8) score++;
-    if (password.length >= 12) score++;
-    if (password.length >= 14) score++;
     if (password.match(/[A-Z]/)) score++;
     if (password.match(/[a-z]/)) score++;
     if (password.match(/[0-9]/)) score++;
     if (password.match(/[^A-Za-z0-9]/)) score++;
-    return strengths[Math.min(score, 4)];
+    if (password.match(/[\.\,\?\!\@\#\$\%\^\&\*\(\)\-\=\_\+\[\]\{\}\;\:\'\"\<\>\|\\\//]/)) score++;
+
+    // Specifikke krav til at blive klassificeret som 'stærk'
+    if (password.length >= 10 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/)) {
+        score = Math.max(score, 5); // Sætter scoren til 5 hvis alle 'stærk' betingelser er mødt
+    }
+
+    // Tjek for 'meget stærkt' krav
+    if (password.length >= 14 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/) && password.match(/[\.\,\?\!\@\#\$\%\^\&\*\(\)\-\=\_\+\[\]\{\}\;\:\'\"\<\>\|\\\//]/)) {
+        score = Math.max(score, 6); // Sætter scoren til 6 hvis alle 'meget stærk' betingelser er mødt
+    }
+
+    return strengths[Math.min(score, 6)];
 }
 
 function checkPasswordStrength() {
@@ -44,34 +56,5 @@ function checkPasswordStrength() {
     const strength = getPasswordStrength(password);
 
     strengthDisplay.textContent = `Styrke: ${strength.label}`;
-    strengthDisplay.style.backgroundColor = strength.color;
-}
-
-function getPasswordStrength(password) {
-    const strengths = {
-        0: { label: "Meget svag", description: "Dit password er meget svagt. Prøv at inkludere forskellige typer tegn og gøre det længere.", color: "#f44336" },
-        1: { label: "Svag", description: "Dit password er svagt. Overvej at tilføje flere tal, store bogstaver eller symboler for at styrke det.", color: "#ff9800" },
-        2: { label: "Middel", description: "Dit password er middel. Det er okay, men kan forbedres med flere komplekse tegn og en længere længde.", color: "#ffeb3b" },
-        3: { label: "Stærk", description: "Godt gjort! Dit password er stærkt, men overvej altid at holde det opdateret og unikt for forskellige sites.", color: "#4caf50" },
-        4: { label: "Meget stærk", description: "Fantastisk! Dit password er meget stærkt og sikkerhedsniveauet er højt.", color: "#009688" }
-    };
-    let score = 0;
-    if (password.length < 6) return strengths[0];
-    if (password.length >= 8) score++;
-    if (password.length >= 12) score++;
-    if (password.length >= 14) score++;
-    if (password.match(/[A-Z]/)) score++;
-    if (password.match(/[a-z]/)) score++;
-    if (password.match(/[0-9]/)) score++;
-    if (password.match(/[^A-Za-z0-9]/)) score++;
-    return strengths[Math.min(score, 4)];
-}
-
-function checkPasswordStrength() {
-    const password = document.getElementById('passwordInput').value;
-    const strengthDisplay = document.getElementById('strengthDisplay');
-    const strength = getPasswordStrength(password);
-
-    strengthDisplay.innerHTML = `Styrke: ${strength.label} <br>${strength.description}`;
     strengthDisplay.style.backgroundColor = strength.color;
 }
