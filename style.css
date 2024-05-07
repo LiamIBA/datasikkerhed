@@ -1,10 +1,9 @@
-@charset "UTF-8";
 body {
   font-family: "Arial", sans-serif;
   background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Sørger for at indhold og slider er adskilt */
+  justify-content: space-between;
   height: 100vh;
   margin: 0;
   overflow: hidden;
@@ -54,7 +53,7 @@ body {
 .popup {
   position: fixed;
   top: 0;
-  right: -400px; /* Hidden by default */
+  right: -400px;
   width: 300px;
   height: 100%;
   background: white;

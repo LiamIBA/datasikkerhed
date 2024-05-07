@@ -29,22 +29,23 @@ function getPasswordStrength(password) {
 
     let score = 0;
 
-    if (password.length >= 6) score++;
     if (password.length >= 8) score++;
+    if (password.length >= 12) score++;
+    if (password.length >= 18) score++;
     if (password.match(/[A-Z]/)) score++;
     if (password.match(/[a-z]/)) score++;
     if (password.match(/[0-9]/)) score++;
     if (password.match(/[^A-Za-z0-9]/)) score++;
     if (password.match(/[\.\,\?\!\@\#\$\%\^\&\*\(\)\-\=\_\+\[\]\{\}\;\:\'\"\<\>\|\\\//]/)) score++;
 
-    // Specifikke krav til at blive klassificeret som 'stærk'
+    
     if (password.length >= 10 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/)) {
-        score = Math.max(score, 5); // Sætter scoren til 5 hvis alle 'stærk' betingelser er mødt
+        score = Math.max(score, 5); 
     }
 
-    // Tjek for 'meget stærkt' krav
+    
     if (password.length >= 14 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/) && password.match(/[\.\,\?\!\@\#\$\%\^\&\*\(\)\-\=\_\+\[\]\{\}\;\:\'\"\<\>\|\\\//]/)) {
-        score = Math.max(score, 6); // Sætter scoren til 6 hvis alle 'meget stærk' betingelser er mødt
+        score = Math.max(score, 6); 
     }
 
     return strengths[Math.min(score, 6)];

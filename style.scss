@@ -9,7 +9,7 @@ body {
     background-color: #f1f1f1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Sørger for at indhold og slider er adskilt */
+    justify-content: space-between; 
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -17,19 +17,19 @@ body {
 
 .slider {
     position: absolute;
-    bottom: 0; // Placerer slideren i bunden af siden
-    width: 100%; // Fuld bredde af viewport
-    height: 50%; // Fast højde baseret på billedernes højde
+    bottom: 0; 
+    width: 100%; 
+    height: 50%; 
     overflow: hidden;
     display: flex;
-    justify-content: center; // Centrerer slides horisontalt
-    align-items: center; // Centrerer slides vertikalt
+    justify-content: center; 
+    align-items: center;
 }
 
 .slide {
     position: absolute;
-    opacity: 0; // Gør slides usynlige som standard
-    transition: opacity 1s ease-in-out; // Glat transition for opacitet
+    opacity: 0;
+    transition: opacity 1s ease-in-out; 
 }
 
 .active {
@@ -61,7 +61,7 @@ body {
 .popup {
     position: fixed;
     top: 0;
-    right: -400px; /* Hidden by default */
+    right: -400px;
     width: 300px;
     height: 100%;
     background: white;
